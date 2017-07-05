@@ -1,0 +1,18 @@
+配置git，指定用户名和邮箱
+$ git config --global user.name "cliangcliang0"
+$ git config --global user.email "cliangcliang@qq.com"
+查看配置信息
+$ git config --list
+创建一个本地respository
+$ git init myGitTest
+$ cd myGitTest
+$ gedit README
+$ gedit sample.cpp
+将这两个文件通过git添加到刚刚创建的myGitTest
+$ git add README
+$ git add smaple.cpp
+将myGitTest的变化更新情况提交：
+$ git commit -m "create a git project"
+将本地的repository提交到GitHub：
+$ git remote add origin https://github.com/cliangcliang0/myGitTest.git
+$ git push origin master
