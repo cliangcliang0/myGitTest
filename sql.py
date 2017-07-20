@@ -30,8 +30,12 @@ class UrlManager(object):
     def has_new_url(self):
         return len(self.new_urls) != 0
 
+    #return  new url  from  new set,and save at old set
     def get_new_url(self):
         new_url = self.new_urls.pop()
+        self.old_urls.add(new_url)
+        return new_url
+        
 
 '''
 a = UrlManager()
@@ -39,11 +43,14 @@ print a
 a.add_new_url('www.baidu.com')
 a.add_new_url('www.google.com')
 u = ('www.caoliu.com','www.taobao.com')
+#a.add_new_url(u)
 a.add_new_urls(u)
 #a.add_new_urls('www.caoli.com','www.1024.com')
 #a.add_new_urls('www.google.com')
 print a.has_new_url()
 #print a.get_new_url()
+print a.new_urls
+a.get_new_url()
 print a.new_urls
 print a.old_urls
 '''
@@ -157,6 +164,7 @@ class SpiderMain(object):
         return new_urls
 
     def craw(self):
+        print '---------------------inside function craw-------------------------------------'
         self.urls.add_new_url(self.root)
         while self.urls.has_new_url():
             _content = []
@@ -173,6 +181,7 @@ class SpiderMain(object):
                 except:
                     pass
 
+                #print type(new_url)
                 #print "craw:" + str(new_url)
                 print("craw:" + new_url)
                 t = threading.Thread(target = self.download.download,args=(new_url,_content))
