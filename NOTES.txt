@@ -1,0 +1,4 @@
+搜狗输入发安装
+dpkg -i sogoupinyin_2.0.0.0068_amd64.deb 
+用apt-get -f install 可以解决依赖，之后再敲上面的dpkg命令即可，安装成功
+安装完后，重启一下，ctrl+空格即可激活搜狗输入法，其实这是解决安装deb包有依赖的通用方法吧
